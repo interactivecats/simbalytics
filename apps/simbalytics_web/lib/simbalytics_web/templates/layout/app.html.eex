@@ -8,7 +8,8 @@
     <meta name="author" content="">
 
     <title>Hello Simbalytics!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"></link>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/main.css") %>">
   </head>
 
   <body>
@@ -30,6 +31,6 @@
       </main>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/main.js") %>"></script>
   </body>
 </html>
