@@ -7,6 +7,7 @@ defmodule Simbalytics.Web.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Simbalytics.Web.Auth
   end
 
   pipeline :api do
@@ -17,10 +18,14 @@ defmodule Simbalytics.Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/users", UserController, only: [:new, :create]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
+
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Simbalytics.Web do
-  #   pipe_through :api
-  # end
+  scope "/app", Simbalytics.Web do
+    pipe_through [:browser, :authenticate_user]
+
+    get "/*path", PageController, :index
+  end
 end

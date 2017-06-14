@@ -40,3 +40,6 @@ config :simbalytics_web, Simbalytics.Web.Endpoint,
       ~r{lib/simbalytics_web/templates/.*(eex)$}
     ]
   ]
+
+config :guardian, Guardian,
+  secret_key: "1G35olcy7lVTGikH4xYbh75aSeIFWx1+npkHLvM34g+XjsZM7HbMEP7jk5QDr7P9"

@@ -22,6 +22,7 @@ defmodule Simbalytics.Web do
       import Plug.Conn
       import Simbalytics.Web.Router.Helpers
       import Simbalytics.Web.Gettext
+      import Simbalytics.Web.Auth, only: [authenticate_user: 2] # New import
     end
   end
 
@@ -47,6 +48,7 @@ defmodule Simbalytics.Web do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Simbalytics.Web.Auth, only: [authenticate_user: 2] # New import
     end
   end
 
