@@ -15,7 +15,7 @@ defmodule Simbalytics.Web.SessionControllerTest do
 
   test "logins user and redirects to show when data is valid", %{conn: conn, user: user} do
     conn = post conn, session_path(conn, :create), session: @valid_attrs
-    assert redirected_to(conn) == page_path(conn, :auth)
+    assert redirected_to(conn) == page_path(conn, :react_app)
     assert get_session(conn, :user_id) == user.id
   end
 
