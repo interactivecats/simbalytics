@@ -6,9 +6,11 @@ defmodule Simbalytics.AccountsTest do
   describe "users" do
     alias Simbalytics.Accounts.User
 
-    @valid_attrs %{email: "some email", name: "some name", password_hash: "some password_hash"}
-    @update_attrs %{email: "some updated email", name: "some updated name", password_hash: "some updated password_hash"}
-    @invalid_attrs %{email: nil, name: nil, password_hash: nil}
+    @valid_attrs %{email: "dave@gmail.com", name: "some name", password: "some_password"}
+    @update_attrs %{email: "dave2@gmail.com", name: "some name 2", password: "some_password"}
+    @invalid_attrs_1 %{email: nil, name: nil, password: nil}
+    @invalid_attrs_2 %{email: "ben", name: "some name", password: "some_password"}
+    @invalid_attrs_3 %{email: "dave@gmail.com", name: "some name", password: "s"}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -16,7 +18,7 @@ defmodule Simbalytics.AccountsTest do
         |> Enum.into(@valid_attrs)
         |> Accounts.create_user()
 
-      user
+      %{user | password: nil}
     end
 
     test "list_users/0 returns all users" do
@@ -31,27 +33,25 @@ defmodule Simbalytics.AccountsTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
-      assert user.email == "some email"
+      assert user.email == "dave@gmail.com"
       assert user.name == "some name"
-      assert user.password_hash == "some password_hash"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Accounts.create_user(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Accounts.create_user(@invalid_attrs_1)
     end
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, user} = Accounts.update_user(user, @update_attrs)
       assert %User{} = user
-      assert user.email == "some updated email"
-      assert user.name == "some updated name"
-      assert user.password_hash == "some updated password_hash"
+      assert user.email == "dave2@gmail.com"
+      assert user.name == "some name 2"
     end
 
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
-      assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_attrs_1)
       assert user == Accounts.get_user!(user.id)
     end
 

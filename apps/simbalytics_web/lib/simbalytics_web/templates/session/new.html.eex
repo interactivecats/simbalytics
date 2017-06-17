@@ -1,6 +1,5 @@
 <div class="simple-subscription-form">
   <h4>Login</h4>
-  <p>Request Magic Link:</p>
   <div class="alert callout flash-message" data-closable><%= get_flash(@conn, :login_error) %></div>
   <%= form_for @conn, session_path(@conn, :create), [as: :session, id: "sign_in_form"], fn f -> %>
     <div class="input-group">

@@ -20,6 +20,7 @@ defmodule Simbalytics.Web.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       import Simbalytics.Web.Router.Helpers
+      import Simbalytics.Web.Factory
 
       # The default endpoint for testing
       @endpoint Simbalytics.Web.Endpoint

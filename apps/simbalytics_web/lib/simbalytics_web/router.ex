@@ -26,6 +26,6 @@ defmodule Simbalytics.Web.Router do
   scope "/app", Simbalytics.Web do
     pipe_through [:browser, :authenticate_user]
 
-    get "/*path", PageController, :index
+    get "/", PageController, :auth
   end
 end

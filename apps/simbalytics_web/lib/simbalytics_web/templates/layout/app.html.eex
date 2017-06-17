@@ -13,6 +13,12 @@
   </head>
 
   <body>
+    <%= if @current_user do %>
+      <%= link "Log out", to: session_path(@conn, :delete, @current_user), class: "button hollow", method: "delete" %>
+    <% else %>
+      <%= link "Register", to: user_path(@conn, :new), class: "button hollow" %>
+      <%= link "Log in", to: session_path(@conn, :new), class: "button hollow" %>
+    <% end %>
     <div class="container">
       <header class="header">
         <nav role="navigation">

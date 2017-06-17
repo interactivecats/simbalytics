@@ -15,7 +15,7 @@ defmodule Simbalytics.Web.SessionController do
   def create(conn, %{"session" => %{"email" => email, "password" => pass}}) do
     case Simbalytics.Web.Auth.login_by_email_and_pass(conn, email, pass) do
       {:ok, conn} -> conn
-        |> redirect(to: "/app")
+        |> redirect(to: page_path(conn, :auth))
       {:error, _reason, conn} ->
         conn
         |> put_flash(:error, "Invalid email/password")

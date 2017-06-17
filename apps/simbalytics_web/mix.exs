@@ -41,7 +41,8 @@ defmodule Simbalytics.Web.Mixfile do
      {:simbalytics, in_umbrella: true},
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 3.0"},
-     {:guardian, "~> 0.14"}
+     {:guardian, "~> 0.14"},
+     {:ex_machina, "~> 2.0", only: :test},
    ]
   end
 
