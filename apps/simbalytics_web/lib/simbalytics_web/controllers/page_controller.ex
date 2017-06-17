@@ -5,7 +5,7 @@ defmodule Simbalytics.Web.PageController do
     render conn, "index.html"
   end
 
-  def auth(conn, _params) do
-    render conn, "index.html"
+  def react_app(conn, _params) do
+    render conn, "react_app.html", layout: {Simbalytics.Web.LayoutView, "react_app.html"}
   end
 end

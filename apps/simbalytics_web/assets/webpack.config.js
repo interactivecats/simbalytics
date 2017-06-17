@@ -6,10 +6,11 @@ const prod = process.argv.indexOf('-p') !== -1;
 
 const config = {
   devtool: 'source-map',
-  entry: [
-    './js/app.js',
-    './scss/style.scss'
-  ],
+  entry: {
+    app: './js/app.js',
+    react_app: './js/react_app.js',
+    main: './scss/style.scss'
+  },
   output: {
     path: path.resolve(__dirname, "../priv/static"),
     filename: 'js/[name].js',
